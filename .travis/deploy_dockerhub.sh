@@ -6,5 +6,5 @@ if [ "$TRAVIS_BRANCH" = "master" ]; then
 else
     TAG="$TRAVIS_BRANCH"
 fi
-docker build -f Dockerfile -t mtemplate/nodejs:$TAG .
-docker push mtemplate/nodejs
+docker build -t mtemplate/nodejs:$TAG .
+docker push mtemplate/nodejs:$TAG
