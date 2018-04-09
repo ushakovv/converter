@@ -13,8 +13,11 @@ before_install:
   - npm config set spin false
 install:
   - npm install
-after_success:
-  - sh ./.docker/build.sh
+deploy:
+  provider: script
+  script: sh ./.docker/build.sh
+  on:
+    branch: master
 notifications:
   email:
     on_success: change
