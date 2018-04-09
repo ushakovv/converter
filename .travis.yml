@@ -1,23 +1,34 @@
 sudo: required
-dist: trusty
+
 language: node_js
+
 node_js:
   - "7"
+
 services:
   - docker
+
 branches:
   only:
     - master
+
 before_install:
   - npm install -g npm
   - npm config set spin false
+
 install:
   - npm install
+  
+after_success:
+  — sh .travis/deploy_dockerhub.sh
+  — test “$TRAVIS_BRANCH” = “master” && sh .travis/deploy_heroku.sh
+
 deploy:
   provider: script
   script: sh ./.docker/build.sh
   on:
     branch: master
+
 notifications:
   email:
     on_success: change
