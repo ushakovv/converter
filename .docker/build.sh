@@ -1,5 +1,5 @@
 #!/bin/bash
 
-docker login -u pushakovv@yandex.ru -p $DOCKER_PASSWORD
+echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdi
 docker build -t mtemplate/nodejs .
 docker push mtemplate/nodejs
