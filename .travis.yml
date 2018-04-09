@@ -1,0 +1,19 @@
+sudo: required
+dist: trusty
+language: node_js
+node_js:
+  - "7"
+branches:
+  only:
+    - master
+before_install:
+  - npm install -g npm
+  - npm config set spin false
+install:
+  - npm install
+after_success:
+  - sh ./.docker/build.sh
+notifications:
+  email:
+    on_success: change
+    on_failure: always
