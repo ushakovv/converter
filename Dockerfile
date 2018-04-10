@@ -1,6 +1,6 @@
 FROM fedora:27
 
-LABEL maintainer = "Ushakov Pavel <pushakovv@yandex.ru>"
+#LABEL maintainer = "Ushakov Pavel <pushakovv@yandex.ru>"
 
 ENV APPPATH /var/www/node
 
@@ -10,7 +10,7 @@ WORKDIR $APPPATH
 
 RUN mkdir -p $APPPATH
 
-ADD . $APPATH
+ADD ./ $APPATH
 
 EXPOSE 8080
 
